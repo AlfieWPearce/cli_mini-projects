@@ -1,9 +1,9 @@
 import argparse
 
 parser = argparse.ArgumentParser(
-        prog='Task Manager',
-        description='Handle to-dos quickly with minimal hassle',
-        epilog='Enjoy using this tool :)')
+    prog='Task Manager',
+    description='Handle to-dos quickly with minimal hassle',
+    epilog='Enjoy using this tool :)')
 parser.add_argument('-c', '--command', type=str, help='What to do? [add|remove|done|list]')
 parser.add_argument('-t', '--task', type=str, help='What task address / task name to handle / affect?')
 args = parser.parse_args()
@@ -56,15 +56,16 @@ def listTasks():
 
 def parseCommand(command):
     match command.lower():
-        case "add":
+        case "add" | "a":
             addTask(getTask())
-        case "remove":
+        case "remove" | "r":
             removeTask(getTask())
-        case "done":
+        case "done" | "d":
             completeTask(getTask())
-        case "list":
+        case "list" | "l":
+            print(" ")
             listTasks()
-        case "exit":
+        case "exit" | "e" | "x" | "q":
             return True
         case _:
             print("Please enter a valid command!")
@@ -73,6 +74,7 @@ def main():
         parseCommand(args.command)
         return
     while True:
+        print(" ")
         command = getCommand()
         if parseCommand(command):
             return
