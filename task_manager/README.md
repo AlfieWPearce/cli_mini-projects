@@ -14,11 +14,11 @@ This project exists to explore building a _usable CLI application_. It favours s
 
 ## Usage
 
-| Running the program | Using args |
+| Running the program | Args |
 |--|--|
-| Run the program from the project directory | Run the program using args |
+| Run the program from the project directory | Can use these args |
 | `python task_manager.py` | `-c COMMAND -t TASK` |
-| Then the following commands can be completed by answering the two questions | Auto-completes the function specified by the args |
+| Then the following commands can be completed by answering the two questions | Auto-fills questions |
 
 ---
 
