@@ -8,6 +8,7 @@ Each project in this repository is intentionally limited in scope and solves onl
 ## Tools
 
 | Tool | Description | Status |
+| -- | -- | -- |
 | `task_manager` | Simple CLI task manager | ✅ active |
 | _(more coming)_ | | |
 
