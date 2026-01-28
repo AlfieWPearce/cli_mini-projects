@@ -39,4 +39,4 @@ MIT- do whatever you want, don't pretend you wrote it.
 
 ## Author
 
-Built by **Alfie**
+Built by **AlfieWPearce**
