@@ -97,10 +97,10 @@ The conversion will follow three clear stages
 ## Example Usage
 
 ```
-python mdview.py input.md output.html
+python mdview.py --input input.md --output output.html --css styles.css
 ```
 
 > Converts `index.md` into a standalone HTML file `output.html` styled with `styles.css`
-Using no arguments will default to input file being input.md, and output to output.html.
+Using no arguments will default to input file being `input.md`, and output to `output.html`, linked to `styles.css`.
 
 ---

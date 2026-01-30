@@ -1,15 +1,13 @@
 from pathlib import Path
 import re
-
-input_path = Path('input.md')
-output_path = Path('output.html')
+import argparse
 
 HTML_TEMPLATE = """<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>mdview</title>
-    <link rel="stylesheet" href="styles.css"
+    <link rel="stylesheet" href="{css_path}">
 </head>
 <body>
 <main class="markdown-body">
@@ -190,13 +188,21 @@ def render_blocks(blocks: list[dict]) -> str:
     return '\n'.join(render_block(block) for block in blocks)
 
 def main():
-    md_text = input_path.read_text(encoding='utf-8')
+    parser = argparse.ArgumentParser("Convert Markdown to HTML")
+    parser.add_argument('--input', type=Path, help='Input Markdown file', default=Path('input.md'))
+    parser.add_argument('--output', type=Path, help='Output HTML file', default=Path('output.html'))
+    parser.add_argument('--css', type=Path, help='CSS file to link', default=Path('styles.css'))
+    args = parser.parse_args()
 
+    if not args.input.exists():
+        raise FileNotFoundError(f'Input file not found: {args.input}')
+
+    md_text = args.input.read_text(encoding='utf-8')
     blocks = parse_markdown(md_text)
     html_body = render_blocks(blocks)
 
-    full_html = HTML_TEMPLATE.format(content=html_body)
-    output_path.write_text(full_html, encoding='utf-8')
+    full_html = HTML_TEMPLATE.format(content=html_body, css_path=args.css)
+    args.output.write_text(full_html, encoding='utf-8')
 
 if __name__ == '__main__':
     main()
