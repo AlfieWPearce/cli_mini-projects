@@ -1,0 +1,50 @@
+body {
+    line-height: 1.5;
+}
+
+code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+    font-size: 0.95rem;
+}
+p > code,
+li > code,
+dd > code,
+td > code {
+    background: #555;
+    color: #f0f0f0;
+    word-wrap: break-word;
+    box-decoration-break: clone;
+    padding: 0.1rem 0.3rem 0.2rem;
+    border-radius: 0.2rem;
+}
+
+pre {
+    background: #555;
+    color: #f0f0f0;
+    word-wrap: break-word;
+    box-decoration-break: clone;
+    padding: 0.75rem 1rem;
+    border-radius: 0.2rem;
+}
+pre code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    background: none;
+    padding: 0;
+}
+
+ul, ol {
+    margin: 0.5em 0 1em 2em;
+}
+li {
+    margin: 0.4em 0;
+}
+
+blockquote {
+    border-left: 4px solid #555;
+    margin-left: 1em;
+    padding-left: 1em;
+    line-height: 0.6;
+    color: #555
+}

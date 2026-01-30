@@ -24,7 +24,7 @@ Rather than rely on the existing library, this project implements a **small, exp
 
 ---
 
-## Supported Markdown Syntax (planned)
+## Planned & Current Supported Markdown Syntax
 
 ### Block Elements
 - Headings
@@ -47,7 +47,7 @@ Any non-empty line not matching another rule
 ```
 - Code blocks
 ```
-code here
+`code here`
 ```
 - Blockquotes
 ```md
@@ -64,6 +64,15 @@ code here
 *italic*
 `code`
 [text](url)
+```
+
+### Tables
+
+```md
+| Head 1 | Head 2 |
+| ------ | ------ |
+| cell 1 | cell 2 |
+| row 2  | row 2  |
 ```
 
 ---
@@ -90,4 +99,8 @@ The conversion will follow three clear stages
 ```
 python mdview.py input.md output.html
 ```
+
+> Converts `index.md` into a standalone HTML file `output.html` styled with `styles.css`
+Using no arguments will default to input file being input.md, and output to output.html.
+
 ---
