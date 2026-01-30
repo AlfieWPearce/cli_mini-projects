@@ -56,5 +56,19 @@ def hello(name):
 hello(world)
 ```
 
+---
+
+## Quotes work too
+
 > This is a quote
 > Written by a certain AlfieWPearce
+
+---
+
+## And so do tables
+
+| Name | Age | Role |
+| ---- | --- | ---- |
+| Alfie | ... | Wizard |
+| Vim | ∞ | Editor |
+|* **Inline*** | `code` | ~Strike-through~ |

@@ -17,6 +17,35 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 </html>
 """
 
+def is_table_header(lines, i):
+    if i + 1 >= len(lines):
+        return False
+    return (
+        lines[i].startswith('|')
+        and set(lines[i + 1].replace('|', '').strip()) <= {'-', ' '}
+    )
+def split_row(line):
+    return [
+        cell.strip()
+        for cell in line.strip().strip('|').split('|')
+    ]
+def parse_table(lines, i):
+    header = split_row(lines[i])
+    i += 2 # Skip header & seperator
+    rows = []
+
+    while i < len(lines) and lines[i].startswith('|'):
+        rows.append(split_row(lines[i]))
+        i += 1
+
+    return {
+        'type': 'table',
+        'text': '',
+        'header': header,
+        'rows': rows
+    }, i
+
+
 def is_blockquote(line: str) -> bool:
     return line[:2] == '> '
 
@@ -44,6 +73,10 @@ def parse_markdown(md_text: str) -> str:
 
         if not line.strip():
             i += 1
+            continue
+        elif is_table_header(lines, i):
+            block, i = parse_table(lines, i)
+            blocks.append(block)
             continue
         elif is_blockquote(line):
             quote_lines = []
@@ -136,7 +169,7 @@ def render_inline(text: str) -> str:
     text = re.sub(r"\*\*\*([^\*]+)\*\*\*", r"<strong><em>\1</em></strong>", text)
     text = re.sub(r"\*\*([^\*]+)\*\*", r"<strong>\1</strong>", text)
     text = re.sub(r"\*([^\*]+)\*", r"<em>\1</em>", text)
-    text = re.sub(r"~~([^~]+)~~", r"<del>\1</del>", text)
+    text = re.sub(r"~([^~]+)~", r"<del>\1</del>", text)
     text = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", r'<a href="\2" target="_blank" rel="noopener noreferrer">\1</a>', text)
     return text
 
@@ -144,6 +177,24 @@ def render_text(text: str) -> str:
     text = escape_html(text)
     text = render_inline(text)
     return text
+
+def render_table(block):
+    parts = ['<table>']
+    
+    parts.append('<thead><tr>')
+    for cell in block['header']:
+        parts.append(f'<th>{render_text(cell)}</th>')
+    parts.append('</tr></thead>')
+
+    parts.append('<tbody>')
+    for row in block['rows']:
+        parts.append('<tr>')
+        for cell in row:
+            parts.append(f'<td>{render_text(cell)}</td>')
+        parts.append('</tr>')
+    parts.append('</tbody></table>')
+
+    return ''.join(parts)
 
 def render_block(block: dict) -> str:
     block_type = block['type']
@@ -182,6 +233,8 @@ def render_block(block: dict) -> str:
 
         content = '\n'.join(inner)
         return f'<blockquote>\n{content}\n</blockquote>'
+    elif block_type == 'table':
+        return render_table(block)
     return ''
 
 def render_blocks(blocks: list[dict]) -> str:
