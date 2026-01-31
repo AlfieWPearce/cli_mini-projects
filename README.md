@@ -1,6 +1,6 @@
 # CLI Mini-Projects
 
-A growing collectionof small, focused CLI tools.
+A growing collection of small, focused CLI tools.
 Each project in this repository is intentionally limited in scope and solves only one issue.
 
 ---
