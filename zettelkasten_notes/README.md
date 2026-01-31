@@ -50,7 +50,7 @@ By default, the project uses the following layout:
 ```
 note.py     "the script
 .note_state "the previous enquiry
-notes\      "the dumb storage
+notes/      "the dumb storage
 └── ID.txt  "all notes are stored as ID.txt
 ```
 

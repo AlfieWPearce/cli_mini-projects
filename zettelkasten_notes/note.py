@@ -5,7 +5,7 @@ import subprocess
 import difflib
 from random import randint
 
-NOTE_DIR = 'notes/_test'
+NOTE_DIR = 'notes'
 STATE_FILE = '.note_state'
 
 def load_state():
