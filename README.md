@@ -11,7 +11,7 @@ Each project in this repository is intentionally limited in scope and solves onl
 | -- | -- | -- |
 | `task_manager` | Simple CLI task manager | ✅ active |
 | `mdview` | .md to .HTML converter | ✅ active |
-| `zettelkasten notes` | a zettelkasten-style note manager | ❌ production |
+| `zettelkasten notes` | a zettelkasten-style note manager | ✅ active |
 | _(more coming)_ | | |
 
 Each tool lives in its own directory with its own README
