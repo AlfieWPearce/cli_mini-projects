@@ -48,10 +48,10 @@ A typical note contains:
 
 By default, the project uses the following layout:
 ```
-note.py  "the script
-notes\   "the dumb storage
-| ID.txt "all notes are stored as ID.txt
-...
+note.py     "the script
+.note_state "the previous enquiry
+notes\      "the dumb storage
+└── ID.txt  "all notes are stored as ID.txt
 ```
 
 ---
@@ -85,7 +85,16 @@ Notes are navigated through:
 
 ---
 
-## Core commands
+## Usage
+
+Examples
+- `note.py create` - creates a new note and opens EDITOR
+- `note.py edit <id>`
+- `note.py read <id>` - reads note with <id>
+- `note.py search <text>` - creates a new note and opens EDITOR
+- `note.py fzf <text>` - creates a new note and opens EDITOR
+- `note.py random` - creates a new note and opens EDITOR
+
 
 This tool supports a small set of core actions:
 - *Create* a new note
