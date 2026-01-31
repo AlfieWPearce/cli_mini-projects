@@ -89,19 +89,11 @@ Notes are navigated through:
 
 Examples
 - `note.py create` - creates a new note and opens EDITOR
-- `note.py edit <id>`
-- `note.py read <id>` - reads note with <id>
-- `note.py search <text>` - creates a new note and opens EDITOR
-- `note.py fzf <text>` - creates a new note and opens EDITOR
-- `note.py random` - creates a new note and opens EDITOR
-
-
-This tool supports a small set of core actions:
-- *Create* a new note
-- *Open* an existing note
-- *Search* across all notes
-- *Show backlinks* to a note
-- *List or Explore* notes (optionally random)
+- `note.py edit <id>` - edits note <id>
+- `note.py read <id>` - reads note <id> - reading shows backlinks
+- `note.py search <text>` - search for note containing <text>
+- `note.py fzf <text>` - fuzzy search for note alike <text>
+- `note.py random` - reads note random
 
 ---
 
@@ -121,7 +113,7 @@ A typical workflow looks like:
 2. Create a new note
 3. Write the idea clearly and concisely in your own words
 4. Link it to existing notes where relevant
-5. Revisit notes later through search or backlinks
+5. Revisit notes later through search & backlinks
 
 Notes are rarely deleted and typically edited only to improve clarity.
 
